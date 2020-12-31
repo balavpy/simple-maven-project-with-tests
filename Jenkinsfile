@@ -6,5 +6,10 @@ pipeline {
         sh 'mvn clean install test package'
       }
     }
+    stage('Testing') {
+      steps {
+        realtimeJUnit(testResults: '**/surefire-reports/**/*.xml')
+      }
+    }
   }
 }
